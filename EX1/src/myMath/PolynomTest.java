@@ -2,6 +2,8 @@ package myMath;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Iterator;
+
 import org.junit.jupiter.api.Test;
 
 
@@ -23,14 +25,34 @@ class PolynomTest {
 
 	@Test
 	void testF() {
+		double coef0 = Math.random()*100;
+		double coef1 = Math.random()*100;
+		double coef2 = Math.random()*100;
+		double coef3 = Math.random()*100;
+
+		int power0 = (int)(Math.random()*100);
+		int power1 = (int)(Math.random()*100);
+		int power2 = (int)(Math.random()*100);
+		int power3 = (int)(Math.random()*100);
+
+		Monom m0 = new Monom(coef0 , power0);
+		Monom m1 = new Monom(coef1 , power1);
+		Monom m2 = new Monom(coef2 , power2);
+		Monom m3 = new Monom(coef3 , power3);
+
 		Polynom p=new Polynom();
-		p.add(new Monom(2,3));
-		p.add(new Monom(2,4));
-		p.add(new Monom(2,2));
-		p.add(new Monom(2,1));
-		p.add(new Monom(2,0));
-		System.out.println(p.toString());
-		if(p.f(2)!=62)
+		p.add(m0);
+		p.add(m1);
+		p.add(m2);
+		p.add(m3);
+
+		double x = Math.random()*100;
+		double ans = coef0 * Math.pow(x , power0);
+		ans += coef1 * Math.pow(x , power1);
+		ans += coef2 * Math.pow(x , power2);
+		ans += coef3 * Math.pow(x , power3);
+
+		if(p.f(x) != ans)
 			fail("ERR:wrong answer");
 	}
 
@@ -131,12 +153,28 @@ class PolynomTest {
 
 	@Test
 	void testSize() {
-		System.out.println("size");
+		double coef0 = Math.random()*100;
+		double coef1 = Math.random()*100;
+		double coef2 = Math.random()*100;
+		double coef3 = Math.random()*100;
+
+		int power0 = 1;
+		int power1 = 2;
+		int power2 = 3;
+		int power3 = 4;
+
+		Monom m0 = new Monom(coef0 , power0);
+		Monom m1 = new Monom(coef1 , power1);
+		Monom m2 = new Monom(coef2 , power2);
+		Monom m3 = new Monom(coef3 , power3);
+
 		Polynom p=new Polynom();
-		p.add(new Monom(2,2));
-		p.add(new Monom(2,1));
-		p.add(new Monom(2,0));
-		if(p.size()!=3)
+		p.add(m0);
+		p.add(m1);
+		p.add(m2);
+		p.add(m3);
+		
+		if(p.size() != 4)
 			fail("ERR:wrong size");
 	}
 
@@ -158,10 +196,28 @@ class PolynomTest {
 
 	@Test
 	void testIsZero() {
-		System.out.println("equals");
+		double coef0 = Math.random()*100;
+		double coef1 = Math.random()*100;
+		double coef2 = Math.random()*100;
+		double coef3 = Math.random()*100;
+
+		int power0 = (int)(Math.random()*100);
+		int power1 = (int)(Math.random()*100);
+		int power2 = (int)(Math.random()*100);
+		int power3 = (int)(Math.random()*100);
+
+		Monom m0 = new Monom(coef0 , power0);
+		Monom m1 = new Monom(coef1 , power1);
+		Monom m2 = new Monom(coef2 , power2);
+		Monom m3 = new Monom(coef3 , power3);
+
 		Polynom p=new Polynom();
-		p.add(new Monom(2,2));
-		if(p.isZero()&&p.size()!=0)
+		p.add(m0);
+		p.add(m1);
+		p.add(m2);
+		p.add(m3);
+		
+		if(p.isZero() )
 			fail("ERR:if the polynom is the zero polynom then its size have to be zero");
 	}
 
@@ -180,6 +236,40 @@ class PolynomTest {
 
 	@Test
 	void testDerivative() {
+		double coef0 = Math.random()*100;
+		double coef1 = Math.random()*100;
+		double coef2 = Math.random()*100;
+		double coef3 = Math.random()*100;
+
+		int power0 = (int)(Math.random()*100);
+		int power1 = (int)(Math.random()*100);
+		int power2 = (int)(Math.random()*100);
+		int power3 = (int)(Math.random()*100);
+
+		Monom m0 = new Monom(coef0 , power0);
+		Monom m1 = new Monom(coef1 , power1);
+		Monom m2 = new Monom(coef2 , power2);
+		Monom m3 = new Monom(coef3 , power3);
+
+		Polynom p0 = new Polynom();
+		p0.add(m0);
+		p0.add(m1);
+		p0.add(m2);
+		p0.add(m3);
+		
+		Polynom p1 = new Polynom();
+		Iterator<Monom> iter = p0.iteretor();
+		while(iter.hasNext()) {
+			Monom m4 = new Monom(iter.next());
+			m4.derivative();
+			p1.add(m4);
+		}
+		
+		if(!p0.derivative().equals(p1))
+			fail("ERR:wrong derivative");
+		
+		
+		/*
 		System.out.println("testDerivative");
 		Polynom p=new Polynom();
 		p.add(new Monom(2,2));
@@ -193,6 +283,7 @@ class PolynomTest {
 		System.out.println(p.derivative().equals(p1));
 		if(!p.derivative().equals(p1))
 			fail("ERR:the p and p1 derivative are not equal");
+			*/
 	}
 
 	@Test
