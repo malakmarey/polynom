@@ -275,23 +275,40 @@ if yes then remove the monom from the polynom
 	 */
 	public double root(double x0, double x1, double eps) {
 		// TODO Auto-generated method stub
-		double y0=this.f(x0);
-		double y1=this.f(x1);
-		if(y0*y1>0)throw new RuntimeException("ERR:");
-		double delta_x = Math.abs(x0-x1);
-		double delta_y = Math.abs(y0-y1);
-		if (delta_x>eps || delta_y>eps) {
-			double x_mid = (x0+x1)/2;
-			double y_mid = this.f(x_mid);
-			double dir = y0*y_mid;
-			if(dir<0) {
-				return root(x0,x_mid, eps);
-			}
-			else {
-				return root(x_mid, x1, eps);
-			}
+		double f0 = this.f(x0);
+		double f1 = this.f(x1);
+
+		if (f0 * f1 > 0)
+		{
+			throw new RuntimeException("ERROR: x1 and x0 are not opposite to one another."); // If the values are invalid
 		}
-		return x0;
+
+		double lengthX = Math.abs(x0 - x1);
+		double lengthF = Math.abs(f0 - f1);
+		while (lengthX > eps || lengthF > eps) // Check if we reached tolerance of error.
+		{
+			double xm = (x0 + x1) / 2;
+			double fm = this.f(xm);
+			double value = f0 * fm;
+			if (value < 0)
+			{
+				x1 = xm;
+				f1 = this.f(x1);
+			}
+			else if (value > 0)
+			{
+				x0 = xm;
+				f0 = this.f(x0);
+			}
+
+			else
+			{
+				return xm;
+			}
+			lengthX = Math.abs(x0 - x1);
+			lengthF = Math.abs(f0 - f1);
+		}
+		return x1;
 	}
 	/**
 	 *function that adds new monom to the polynom
@@ -361,12 +378,47 @@ if yes then remove the monom from the polynom
 
 	public double area(double x0, double x1, double eps) {
 		// TODO Auto-generated method stub
-		double a=Math.abs(x1-x0)/eps;
-		double ans=0;
-		for (int i = 1; i <= a; i++) {
-			ans+=eps*this.f(x0+i*eps);
+//		double a=Math.abs(x1-x0)/eps;
+//		double ans=0;
+//		for (int i = 1; i <= a; i++) {
+//			ans+=eps*this.f(x0+i*eps);
+//		}
+//		return ans;
+		if (x0 > x1)
+		{
+			throw new RuntimeException("ERROR: Wrong values (x0 shoudl be less than x1");
 		}
-		return ans;
+		double areaAbove= 0;
+		double areaUnder =0;
+		double aproxmAreaUnder = 0; // Sum of each rectangle.
+		double numOfRec = Math.abs((x1 - x0) / eps); // Number of rectangles calculated using eps.
+		double epsM = eps / 2;
+		for (int i = 1; i <= numOfRec; i++)
+		{
+			double Area = eps * this.f(x0 + epsM);
+			if (Area <= 0)
+			{
+				aproxmAreaUnder += Area;
+			}
+
+			epsM += eps;
+		}
+		areaUnder= -aproxmAreaUnder;
+		double aproxmAreaAbove = 0; // Sum of each rectangle.
+		numOfRec = Math.abs((x1 - x0) / eps); // Number of rectangles calculated using eps.
+		epsM = eps / 2;
+		for (int i = 1; i <= numOfRec; i++)
+		{
+			double Area = eps * this.f(x0 + epsM);
+			if (Area >= 0)
+			{
+				aproxmAreaAbove += Area;
+			}
+
+			epsM += eps;
+		}
+		areaAbove= aproxmAreaAbove;
+		return areaAbove + areaUnder;
 	}
 
 	@Override
