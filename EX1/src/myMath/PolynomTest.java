@@ -37,20 +37,20 @@ class PolynomTest {
 	@Test
 	void testF() {
 		double a1 = Math.random()*1000 ;
-		int _pow1 = (int)Math.random()*1000 ;
+		int _pow1 = (int)(Math.random()*1000) ;
 		Monom m1 = new Monom(a1 , _pow1);
 		double a2 = Math.random()*1000 ;
-		int _pow2 = (int)Math.random()*1000 ;
+		int _pow2 = (int)(Math.random()*1000) ;
 		Monom m2 = new Monom(a2 , _pow2);
 		double a3 = Math.random()*1000 ;
-		int _pow3 = (int)Math.random()*1000 ;
+		int _pow3 = (int)(Math.random()*1000) ;
 		Monom m3 = new Monom(a3 , _pow3);
 		Polynom p=new Polynom();
 		p.add(m1);
 		p.add(m2);
 		p.add(m3);
 		
-		int _x = (int)Math.random()*1000 ;
+		int _x = (int)(Math.random()*1000) ;
 		double ans = a1 * Math.pow(_x , _pow1);
 		ans += a2 * Math.pow(_x , _pow2);
 		ans += a3 * Math.pow(_x , _pow3);
@@ -62,21 +62,20 @@ class PolynomTest {
 	@Test
 	void testAddPolynom_able() {
 		double a1 = Math.random()*1000 ;
-		int _pow1 = (int)Math.random()*1000 ;
+		int _pow1 = (int)(Math.random()*1000) ;
 		Monom m1 = new Monom(a1 , _pow1);
 		double a2 = Math.random()*1000 ;
-		int _pow2 = (int)Math.random()*1000 ;
+		int _pow2 = (int)(Math.random()*1000) ;
 		Monom m2 = new Monom(a2 , _pow2);
 		double a3 = Math.random()*1000 ;
-		int _pow3 = (int)Math.random()*1000 ;
+		int _pow3 = (int)(Math.random()*1000) ;
 		Monom m3 = new Monom(a3 , _pow3);
 		Polynom p1 = new Polynom();
 		p1.add(m1);
 		p1.add(m2);
 		p1.add(m3);
 		Polynom p2 = new Polynom();
-		p2.add(m1);
-		p2.add(m2);
+		p2.add(p1);
 		if(!p1.equals(p2))
 			fail("Not yet implemented");
 	}
@@ -84,13 +83,13 @@ class PolynomTest {
 	@Test
 	void testAddMonom() {
 		double a1 = Math.random()*1000 ;
-		int _pow1 = (int)Math.random()*1000 ;
+		int _pow1 = (int)(Math.random()*1000) ;
 		Monom m1 = new Monom(a1 , _pow1);
 		double a2 = Math.random()*1000 ;
-		int _pow2 = (int)Math.random()*1000 ;
+		int _pow2 = (int)(Math.random()*1000) ;
 		Monom m2 = new Monom(a2 , _pow2);
 		double a3 = Math.random()*1000 ;
-		int _pow3 = (int)Math.random()*1000 ;
+		int _pow3 = (int)(Math.random()*1000) ;
 		Monom m3 = new Monom(a3 , _pow3);
 		Polynom p1=new Polynom();
 		p1.add(m1);
@@ -107,13 +106,13 @@ class PolynomTest {
 	@Test
 	void testSubstractPolynom_able() {
 		double a1 = Math.random()*1000 ;
-		int _pow1 = (int)Math.random()*1000 ;
+		int _pow1 = (int)(Math.random()*1000) ;
 		Monom m1 = new Monom(a1 , _pow1);
 		double a2 = Math.random()*1000 ;
-		int _pow2 = (int)Math.random()*1000 ;
+		int _pow2 = (int)(Math.random()*1000) ;
 		Monom m2 = new Monom(a2 , _pow2);
 		double a3 = Math.random()*1000 ;
-		int _pow3 = (int)Math.random()*1000 ;
+		int _pow3 = (int)(Math.random()*1000) ;
 		Monom m3 = new Monom(a3 , _pow3);
 		Polynom p1 = new Polynom();
 		p1.add(m1);
@@ -132,13 +131,13 @@ class PolynomTest {
 	@Test
 	void testSubstractMonom() {
 		double a1 = Math.random()*1000 ;
-		int _pow1 = (int)Math.random()*1000 ;
+		int _pow1 = (int)(Math.random()*1000) ;
 		Monom m1 = new Monom(a1 , _pow1);
 		double a2 = Math.random()*1000 ;
-		int _pow2 = (int)Math.random()*1000 ;
+		int _pow2 = (int)(Math.random()*1000) ;
 		Monom m2 = new Monom(a2 , _pow2);
 		double a3 = Math.random()*1000 ;
-		int _pow3 = (int)Math.random()*1000 ;
+		int _pow3 = (int)(Math.random()*1000) ;
 		Monom m3 = new Monom(a3 , _pow3);
 		Polynom p1 = new Polynom();
 		p1.add(m1);
@@ -174,13 +173,13 @@ class PolynomTest {
 	@Test
 	void testEqualsPolynom_able() {
 		double a1 = Math.random()*1000 ;
-		int _pow1 = (int)Math.random()*1000 ;
+		int _pow1 = (int)(Math.random()*1000) ;
 		Monom m1 = new Monom(a1 , _pow1);
 		double a2 = Math.random()*1000 ;
-		int _pow2 = (int)Math.random()*1000 ;
+		int _pow2 = (int)(Math.random()*1000) ;
 		Monom m2 = new Monom(a2 , _pow2);
 		double a3 = Math.random()*1000 ;
-		int _pow3 = (int)Math.random()*1000 ;
+		int _pow3 = (int)(Math.random()*1000) ;
 		Monom m3 = new Monom(a3 , _pow3);
 		Polynom p1 = new Polynom();
 		p1.add(m1);
@@ -200,7 +199,7 @@ class PolynomTest {
 		if(!p1.isZero())
 			fail("Eror , checking if Polynom empty eror");
 		double a1 = Math.random()*1000+1 ;
-		int _pow1 = (int)Math.random()*1000 ;
+		int _pow1 = (int)(Math.random()*1000) ;
 		Monom m1 = new Monom(a1 , _pow1);
 		Polynom p2 = new Polynom();
 		p2.add(m1);
