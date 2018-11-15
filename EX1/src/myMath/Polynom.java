@@ -45,17 +45,17 @@ public class Polynom implements Polynom_able {
 	 */
 	public String toString() {
 		String s="";
-		Iterator<Monom> v=this.iteretor();
-		Monom m=v.next();
-		s+=m.toString();
+		Iterator<Monom> v = this.iteretor();
+		Monom m = v.next();
+		s += m.toString();
 		while(v.hasNext()) {
-			m=v.next();
+			m = v.next();
 			if(m.get_coefficient()>0)
-				s+=" + "+m.toString();
+				s += " + " + m.toString();
 			else if(m.get_coefficient()<0) {
-				String r=""+m.toString();
+				String r = "" + m.toString();
 				r=r.substring(1);
-				s+=" - "+r;
+				s+=" - " + r;
 			}
 		}
 		return s;
