@@ -19,13 +19,13 @@ class PolynomTest {
 	@Test
 	void testPolynomString() {
 		double _coefficient1 = Math.random()*1000 ;
-		int _pow1 = (int)(Math.random()*10) ;
+		int _pow1 = (int)(Math.random()*10) +24 ;
 		double _coefficient2 = Math.random()*1000 ;
-		int _pow2 = (int)(Math.random()*10) + 11 ;
+		int _pow2 = (int)(Math.random()*10) + 13 ;
 		double _coefficient3 = Math.random()*1000 ;
-		int _pow3 = (int)(Math.random()*10) + 22;
+		int _pow3 = (int)(Math.random()*10) + 2;
 		String ans = "" + _coefficient1 + "X^" + _pow1 + " + " + _coefficient2 + "X^" + _pow2 + " + " + _coefficient3 + "X^" + _pow3 ;
-		Polynom p = new Polynom("" + _coefficient1 + "X^" + _pow1 + " " + _coefficient2 + "X^" + _pow2 + " " + _coefficient3 + "X^" + _pow3 );
+		Polynom p = new Polynom("" + _coefficient1 + "X^" + _pow1 + " + " + _coefficient2 + "X^" + _pow2 + " + " + _coefficient3 + "X^" + _pow3);
 		System.out.println(ans);
 		System.out.println(p.toString());
 		if(!p.toString().equals(ans))
